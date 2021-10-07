@@ -1,0 +1,11 @@
+---
+
+project_dir: "/home/ubuntu/part1_q2"
+
+docker:
+  redis: "redis:latest"
+  nginx: "nginx:stable"
+
+whitelist_ip:
+  - "10.0.0.1"
+  - "10.0.0.2"

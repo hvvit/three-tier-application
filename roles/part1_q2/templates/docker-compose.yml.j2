@@ -1,0 +1,24 @@
+version: '3'
+services:
+  redis-server:
+    image: {{ docker.redis }}
+    volumes:
+    - ./data:/data
+  node-app:
+    build: .
+    depends_on:
+      - redis-server
+  nginx:
+    image: {{ docker.nginx }}
+    hostname: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - node-app
+    links:
+      - node-app:node-app
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro

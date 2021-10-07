@@ -1,0 +1,10 @@
+---
+
+- name: whitlist ips to connect machine
+  become: true
+  ufw:
+    comment: "Allow traffic between nodes"
+    insert: 1
+    from_ip: "{{ item }}"
+    rule: allow
+  loop: "{{ whitelist_ip }}"

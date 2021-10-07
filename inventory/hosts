@@ -1,0 +1,2 @@
+[ansible_test_hosts]
+10.113.121.129 name=new-machine1 ansible_user=ubuntu

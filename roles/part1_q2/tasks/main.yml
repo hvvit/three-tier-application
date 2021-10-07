@@ -1,0 +1,7 @@
+---
+
+- include_tasks: pre_req.yml
+- include_tasks: nginx.yml
+- include_tasks: certs.yml
+- include_tasks: docker.yml
+- include_tasks: firewall.yml

@@ -1,0 +1,13 @@
+---
+- name: check if certs exists
+  stat:
+    path: "{{ project_dir }}/nginx/ssl/key.pem"
+  register: cert_exists
+
+- name: generate ssl certs
+  block:
+  - name: Generate simple self signed certs
+    shell: |
+      cd {{ project_dir }}/nginx/ssl && \
+      openssl req -x509 -batch -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.pem
+  when: not cert_exists.stat.exists

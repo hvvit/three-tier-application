@@ -1,0 +1,7 @@
+---
+
+- name: Copy nginx configuration
+  copy:
+    src: nodejsProject/nginx/nginx.conf
+    dest: "{{ project_dir }}/nginx/"
+    mode: 0755
